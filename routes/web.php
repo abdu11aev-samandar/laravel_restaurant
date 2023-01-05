@@ -32,7 +32,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/categories', CategoryContoller::class);
     Route::resource('/menus', MenuContoller::class);
     Route::resource('/tables', TableContoller::class);
-    Route::resource('/reservation', ReservationContoller::class);
+    Route::resource('/reservations', ReservationContoller::class);
 });
 
 /*Route::middleware('auth')->group(function () {
