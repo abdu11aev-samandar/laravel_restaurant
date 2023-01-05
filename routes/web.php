@@ -1,6 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminContoller;
+use App\Http\Controllers\Admin\CategoryContoller;
+use App\Http\Controllers\Admin\MenuContoller;
+use App\Http\Controllers\Admin\ReservationContoller;
+use App\Http\Controllers\Admin\TableContoller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +29,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminContoller::class, 'index'])->name('index');
+    Route::resource('/categories', CategoryContoller::class);
+    Route::resource('/menus', MenuContoller::class);
+    Route::resource('/tables', TableContoller::class);
+    Route::resource('/reservation', ReservationContoller::class);
 });
 
 /*Route::middleware('auth')->group(function () {
