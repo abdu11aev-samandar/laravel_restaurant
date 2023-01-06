@@ -27,7 +27,7 @@ class TableContoller extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tables.create');
     }
 
     /**
