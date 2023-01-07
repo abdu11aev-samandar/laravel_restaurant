@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
+use App\Models\Table;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -27,7 +29,9 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('admin.reservations.create');
+        $tables = Table::all();
+
+        return view('admin.reservations.create', compact('tables'));
     }
 
     /**
@@ -36,9 +40,11 @@ class ReservationController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationStoreRequest $request)
     {
-        //
+        Reservation::create($request->validated());
+
+        return to_route('admin.reservations.index');
     }
 
     /**
@@ -58,9 +64,11 @@ class ReservationController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $tables = Table::all();
+
+        return view('admin.reservations.edit', compact('reservation', 'tables'));
     }
 
     /**
@@ -70,9 +78,11 @@ class ReservationController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
-        //
+        $reservation->update($request->validated());
+
+        return to_route('admin.reservations.index');
     }
 
     /**
@@ -81,8 +91,10 @@ class ReservationController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return to_route('admin.reservations.index');
     }
 }
