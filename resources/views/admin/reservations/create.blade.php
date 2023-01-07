@@ -21,7 +21,8 @@
                         @csrf
                         <div class="mb-6">
                             <label for="base-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First
+                                Name</label>
                             <input type="text" name="first_name" id="first_name"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @error('first_name')
@@ -31,7 +32,8 @@
 
                         <div class="mb-6">
                             <label for="base-input"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
+                                Name</label>
                             <input type="text" name="last_name" id="last_name"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @error('last_name')
@@ -51,7 +53,8 @@
 
                         <div class="mb-6">
                             <label for="tel_number"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                                Number</label>
                             <input type="number" name="tel_number" id="tel_number"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @error('tel_number')
@@ -61,7 +64,8 @@
 
                         <div class="mb-6">
                             <label for="res_date"
-                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reservation Date</label>
+                                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reservation
+                                Date</label>
                             <input type="datetime-local" name="res_date" id="res_date"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @error('res_date')
@@ -82,7 +86,8 @@
                         <select name="table_id" required
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @foreach($tables as $table)
-                                <option value="{{ $table->id }}">{{ $table->name }}</option>
+                                <option value="{{ $table->id }}">{{ $table->name }} ({{ $table->guest_number }} Guest)
+                                </option>
                             @endforeach
                         </select>
 
