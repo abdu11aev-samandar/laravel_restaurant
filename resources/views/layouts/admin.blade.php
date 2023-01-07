@@ -34,7 +34,8 @@
             </button>
         </div>
         <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-            <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+            <x-admin-nav-link :href="route('admin.categories.index')"
+                              :active="request()->routeIs('admin.categories.index')">
                 {{ __('Categories') }}
             </x-admin-nav-link>
             <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
@@ -43,7 +44,8 @@
             <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
                 {{ __('Tables') }}
             </x-admin-nav-link>
-            <x-admin-nav-link :href="route('admin.reservations.index')" :active="request()->routeIs('admin.reservations.index')">
+            <x-admin-nav-link :href="route('admin.reservations.index')"
+                              :active="request()->routeIs('admin.reservations.index')">
                 {{ __('Reservations') }}
             </x-admin-nav-link>
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
@@ -81,8 +83,35 @@
         </nav>
     </div>
     <main class="m-2 p-8 w-full">
+
+        <div>
+            @if(session()->has('danger'))
+                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                     role="alert">
+                    <span class="font-medium">Danger alert!</span>{{ session()->get('danger') }}
+                </div>
+            @endif
+
+            @if(session()->has('success'))
+                <div
+                    class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+                    role="alert">
+                    <span class="font-medium">Success alert!</span>{{ session()->get('success') }}
+                </div>
+            @endif
+
+            @if(session()->has('warning'))
+                <div
+                    class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
+                    role="alert">
+                    <span class="font-medium">Warning alert!</span>{{ session()->get('warning') }}
+                </div>
+            @endif
+
+        </div>
+
         {{ $slot }}
-        </main>
-    </div>
-    </body>
+    </main>
+</div>
+</body>
 </html>
