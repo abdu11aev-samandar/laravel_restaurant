@@ -25,6 +25,9 @@
                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                             <input type="text" name="name" id="base-input" value="{{ $table->name }}"
                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @error('name')
+                            <div class="text-sm text-red-400">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Guest
@@ -32,9 +35,13 @@
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             id="guest_number" type="number" name="guest_number" value="{{ $table->guest_number }}">
+                        @error('guest_number')
+                        <div class="text-sm text-red-400">{{ $message }}</div>
+                        @enderror
+
 
                         <label for="status" class="block mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                        <select name="status"
+                        <select name="status" required
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @foreach(\App\Enum\TableStatus::cases() as $status)
                                 <option
@@ -43,7 +50,7 @@
                         </select>
 
                         <label for="location" class="block mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                        <select name="location"
+                        <select name="location" required
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             @foreach(\App\Enum\TableLocation::cases() as $location)
                                 <option value="{{ $location->value }}"  @selected($table->location->value == $location->value)>{{ $location->name }}</option>
